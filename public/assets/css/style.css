@@ -46,7 +46,7 @@
 	font-weight: normal;
 	font-style: normal;
 	font-size: 15px;
-	color: #2c1f97fa;
+	color: ;
 }
 .img {
 	max-width: 100%;
@@ -101,7 +101,7 @@ h4,
 h5,
 h6 {
 	font-family: 'Poppins', sans-serif;
-	color: #0043ff;
+	color: #104993;
 	margin-top: 0px;
 	font-style: normal;
 	font-weight: 700;
@@ -113,7 +113,7 @@ h3 a,
 h4 a,
 h5 a,
 h6 a {
-	color: #0043ff;
+	color: #104993;
 }
 h1 {
 	font-size: 40px;
@@ -145,7 +145,7 @@ p {
 	font-size: 15px;
 	font-weight: normal;
 	line-height: 30px;
-	color: #2c1f97fa;
+	color: ;
 	margin-bottom: 15px;
 }
 hr {
@@ -395,7 +395,7 @@ label {
 .main-menu ul li a {
 	font-size: 15px;
 	font-weight: 600;
-	color: #2c1f97fa;
+	color: ;
 	display: block;
 	padding: 35px 0;
 	line-height: 1;
@@ -435,7 +435,7 @@ label {
 }
 .header-search a {
 	font-size: 17px;
-	color: #2c1f97fa;
+	color: ;
 	display: block;
 	padding: 5px;
 	line-height: 1;
@@ -530,14 +530,14 @@ label {
 	display: none;
 }
 .sticky-menu .main-menu ul li a {
-	color: #2c1f97fa;
+	color: ;
 }
 .sticky-menu .main-menu ul li.active > a,
 .sticky-menu .main-menu ul li:hover > a {
 	color: #d40000;
 }
 .sticky-menu .header-search a {
-	color: #2c1f97fa;
+	color: ;
 }
 .main-header.sticky-menu {
 	padding: 0;
@@ -1990,7 +1990,7 @@ label {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: #0043ff;
+	background: #104993;
 	transform: scale(1);
 	transition: .4s ease-in-out;
 	opacity: 0;
@@ -3171,7 +3171,7 @@ label {
 	box-shadow: none;
 }
 .cta-from .custom-select option {
-	color: #2c1f97fa;
+	color: ;
 	background: #fff;
 }
 .cta-from .cta-form-col input {
@@ -3377,7 +3377,7 @@ label {
 .fact-icon i {
 	font-size: 50px;
 	line-height: 1;
-	color: #0043ff;
+	color: #104993;
 }
 .fact-content h4 {
 	font-size: 36px;
@@ -3655,7 +3655,7 @@ label {
 	display: none;
 }
 .single-pricing:hover .pricing-btn .btn {
-	background: #0043ff;
+	background: #104993;
 }
 .single-pricing:hover .pricing-btn .btn i {
 	background: #3b0872;

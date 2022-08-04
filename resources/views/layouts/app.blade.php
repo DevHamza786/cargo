@@ -182,7 +182,7 @@
                                     </a>
                                 </div>
                                 <div class="header-btn">
-                                    {{-- <a href="#" class="btn" data-toggle="modal" data-target="#exampleModalLong"><img src="img/icon/calculator-symbols.png" alt="icon">Get Fare Rate</a> --}}
+                                    <a href="{{ route('login') }}" class="btn rounded" >Sign In</a>
                                 </div>
                             </div>
                         </div>
