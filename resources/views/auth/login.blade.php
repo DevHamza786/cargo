@@ -47,11 +47,11 @@
                           </div>
                       </div>
                       <div class="text-center">
-                          <button type="submit" class="btn bg-white text-primary btn-block">                                    {{ __('Login') }}</button>
+                          <button type="submit" class="btn bg-white text-primary btn-block">{{ __('Login') }}</button>
                       </div>
                   </form>
                   <div class="new-account mt-3">
-                      <p class="text-white">Don't have an account? <a class="text-white" href="{!! url('/register'); !!}" >Sign up</a></p>
+                      {{-- <p class="text-white">Don't have an account? <a class="text-white" href="{!! url('/register'); !!}" >Sign up</a></p> --}}
                   </div>
               </div>
           </div>

@@ -87,50 +87,100 @@
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10">
                     <div class="tracking-id-info text-center">
-                        <p>Enter Your Cargo Tracking, Door to Door Office <a href="#">Order Number.</a></p>
-                        <form action="#" class="tracking-id-form">
-                            <input type="text" placeholder="Tracking id">
+                        <p>Enter Your Cargo Tracking, Door to Door Office <a href="#">Tracking Number.</a></p>
+                        <form action="{{ route('user.tracking') }}" method="POST" class="tracking-id-form">
+                            @csrf
+                            <input type="text"  name="tracking_id" placeholder="Tracking id" value="{{ $tracking->track_id ?? '' }}" required>
                             <button class="btn red-btn">Tracking</button>
                         </form>
                         <div class="tracking-list">
                             <ul>
-                                <li>
-                                    <div class="tracking-list-icon">
-                                        <i class="flaticon-box"></i>
-                                    </div>
-                                    <div class="tracking-list-content">
-                                        <p>Dispatch</p>
-                                    </div>
-                                </li>
-                                <li class="active">
-                                    <div class="tracking-list-icon">
-                                        <i class="flaticon-warehouse"></i>
-                                    </div>
-                                    <div class="tracking-list-content">
-                                        <p>departed country</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="tracking-list-icon">
-                                        <i class="flaticon-placeholder"></i>
-                                    </div>
-                                    <div class="tracking-list-content">
-                                        <p>Destination</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="tracking-list-icon">
-                                        <i class="flaticon-audit"></i>
-                                    </div>
-                                    <div class="tracking-list-content">
-                                        <p>Successful</p>
-                                    </div>
-                                </li>
+                                @if (isset($tracking))
+                                    <li class="{{ $tracking->status  == 'pending' ? 'active' : '' }}">
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-box"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>Dispatch</p>
+                                        </div>
+                                    </li>
+                                    <li class="{{ $tracking->status  == 'on the way' ? 'active' : '' }}">
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-warehouse"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>departed country</p>
+                                        </div>
+                                    </li>
+                                    <li  class="{{  $tracking->status  == 'shipping' ? 'active' : '' }}">
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-placeholder"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>Destination</p>
+                                        </div>
+                                    </li>
+                                    <li  class="{{  $tracking->status  == 'delivered' ? 'active' : '' }}">
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-audit"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>Successful</p>
+                                        </div>
+                                    </li>
+                                @else
+                                    <li>
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-box"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>Dispatch</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-warehouse"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>departed country</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-placeholder"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>Destination</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tracking-list-icon">
+                                            <i class="flaticon-audit"></i>
+                                        </div>
+                                        <div class="tracking-list-content">
+                                            <p>Successful</p>
+                                        </div>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
-                        <div class="tracking-help">
-                            <p>MULTIPLE TRACKING NUMBERS | <a href="#">NEED HELP?</a></p>
-                        </div>
+                        {{-- Tracking Details --}}
+                        @if (isset($tracking))
+                            <div class="tracking-list">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="single-pricing text-center active">
+                                            <div class="pricing-head">
+                                                <h5>Your <span>Shipment</span></h5>
+                                                <span>{{ $tracking->track_id }}</span>
+                                                <h5>{{ ucwords($tracking->status) }}</h5>
+                                                <h4>{{ $tracking->updated_at->format('l , F d h:m a').' on '.ucfirst($tracking->Destination_country) }}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -160,10 +210,10 @@
                             </div>
                             <div class="s-services-content">
                                 <h6>Delivery Service</h6>
-                                <h3><a href="#">Anywhere Shipping</a></h3>
+                                <h3>Anywhere Shipping</h3>
                                 <p>Express delivery is an innovativ service is effective logistics solutio for delivery of
                                     small cargo service.</p>
-                                <a href="#" class="btn red-btn">LET US HELP</a>
+                                <a href="{{ route('contact') }}" class="btn red-btn">LET US HELP</a>
                             </div>
                         </div>
                     </div>
@@ -174,10 +224,10 @@
                             </div>
                             <div class="s-services-content">
                                 <h6>Inspiration Service</h6>
-                                <h3><a href="#">Get Insights Inspiration</a></h3>
+                                <h3>Get Insights Inspiration</h3>
                                 <p>Express delivery is an innovativ service is effective logistics solutio for delivery of
                                     small cargo service.</p>
-                                <a href="#" class="btn red-btn">LET US HELP</a>
+                                <a href="{{ route('contact') }}" class="btn red-btn">LET US HELP</a>
                             </div>
                         </div>
                     </div>
@@ -188,10 +238,10 @@
                             </div>
                             <div class="s-services-content">
                                 <h6>Discover Locations</h6>
-                                <h3><a href="#">Your Freight Deadlines</a></h3>
+                                <h3>Your Freight Deadlines</h3>
                                 <p>Express delivery is an innovativ service is effective logistics solutio for delivery of
                                     small cargo service.</p>
-                                <a href="#" class="btn red-btn">LET US HELP</a>
+                                <a href="{{ route('contact') }}" class="btn red-btn">LET US HELP</a>
                             </div>
                         </div>
                     </div>

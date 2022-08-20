@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="s-slider-content text-center">
-                                <h6><span class="dots"></span>Cargo & Freight Compan<span class="dots2"></span></h6>
+                                <h6><span class="dots"></span>Cargo & Freight Company<span class="dots2"></span></h6>
                                 <h2 class="frame-1"><span>PASHA</span> ENTERPRISES</h2>
                                 <h2 class="frame-2"><span>PASHA</span> ENTERPRISES</h2>
                                 <h2 class="frame-3"><span>PASHA</span> ENTERPRISES</h2>
@@ -24,9 +24,10 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-lg-11">
                             <div class="slider-form" data-animation="fadeInUpS" data-delay=".9s">
-                                <form action="#">
-                                    <input type="text" placeholder="Tracking id">
-                                    <button class="btn">Tracking</button>
+                                <form action="{{ route('user.tracking') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="tracking_id" placeholder="Tracking id" required>
+                                    <button type="submit" class="btn">Tracking</button>
                                 </form>
                             </div>
                         </div>
@@ -690,35 +691,6 @@
             </div>
         </div>
         <!-- brand-area-end -->
-
-        <!-- newsletter -->
-        <section class="newsletter-area gray-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="newsletter-wrap">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="newsletter-content">
-                                        <h4>Newsletter Sign Up</h4>
-                                        <span>Notifications our best deals...</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="newsletter-form">
-                                        <form action="#">
-                                            <input type="email" placeholder="Enter your email...">
-                                            <button class="btn">subscribe</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- newsletter-end -->
 
     </main>
 @endsection

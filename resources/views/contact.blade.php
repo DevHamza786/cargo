@@ -18,7 +18,7 @@
                                 <li class="dots2"></li>
                             </ol>
                         </nav>
-                        <h2>support</h2>
+                        <h2>Contact Us</h2>
                     </div>
                 </div>
             </div>
@@ -41,23 +41,35 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="support-form text-center">
-                        <form action="#">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" style="text-align: left !important">
+                                <strong>Success! </strong>
+                                    {{ session('success') }}
+                                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close">
+                                    <span><strong>
+                                        <i class="fas fa-times" style="color:green;"></i>
+                                    </strong></span>
+                                </button>
+                            </div>
+                        @endif
+                        <form method="POST" action="{{ route('send.contact') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="First Name *">
+                                    <input type="text" name="name" placeholder="First Name *" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Last Name *">
+                                    <input type="tel" name="phone" placeholder="Phone Number *" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Your E-mail *">
+                                    <input type="email" name="email" placeholder="Your E-mail *" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Website">
+                                    <input type="url" name="webiste" placeholder="Website">
                                 </div>
                             </div>
-                            <textarea name="message" id="message" placeholder="Message"></textarea>
-                            <button class="btn red-btn">Submit Now</button>
+                            <textarea name="message" id="message" placeholder="Message" required></textarea>
+                            <button type="submit" class="btn red-btn">Submit Now</button>
                         </form>
                     </div>
                 </div>

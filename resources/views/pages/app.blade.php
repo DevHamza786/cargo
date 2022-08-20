@@ -116,9 +116,10 @@
                         <div class="col-xl-9 col-lg-8">
                             <div class="third-header-contact">
                                 <div class="third-header-form">
-                                    <form action="#">
-                                        <input type="text" placeholder="Enter Tracking Id...">
-                                        <button><i class="fas fa-search"></i></button>
+                                    <form method="POST" action="{{ route('user.tracking') }}">
+                                        @csrf
+                                        <input type="text" name="tracking_id" placeholder="Enter Tracking Id..." required>
+                                        <button type="submit"><i class="fas fa-search"></i></button>
                                     </form>
                                 </div>
                                 <div class="third-hrader-contact-list">
@@ -161,23 +162,10 @@
                                 <div class="main-menu">
                                     <nav id="mobile-menu">
                                         <ul>
-                                            <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('about_us') }}">Company</a></li>
-                                            <li><a href="{{ route('home') }}">Tracking</a></li>
-                                            {{-- <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="#">Services</a>
-                                                        <ul class="submenu">
-                                                            <li><a href="service-air.html">Services Air</a></li>
-                                                            <li><a href="service-Railway.html">Services Railway</a></li>
-                                                            <li><a href="service-door-to-door.html">Services Door to Door</a></li>
-                                                            <li><a href="service-warehouse.html">Services warehouse</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="pricing.html">Pricing Plan</a></li>
-                                                </ul>
-                                            </li> --}}
-                                            <li><a href="{{ route('support') }}">Support</a></li>
+                                            <li class="{{ $action == "home" ? 'active': '' }}"><a href="{{ route('home') }}">Home</a></li>
+                                            <li class="{{ $action == "about" ? 'active': '' }}"><a href="{{ route('about_us') }}">About Us</a></li>
+                                            <li class="{{ $action == "tracking" ? 'active': '' }}"><a href="{{ route('tracking') }}">Tracking</a></li>
+                                            <li class="{{ $action == "contact" ? 'active': '' }}"><a href="{{ route('contact') }}">Contact Us</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -185,7 +173,11 @@
                                     {{-- <a href="#" data-toggle="modal" data-target="#search-modal"><i class="flaticon-magnifying-glass"></i></a> --}}
                                 </div>
                                 <div class="header-btn s-header-btn">
-                                    {{-- <a href="#" class="btn" data-toggle="modal" data-target="#exampleModalLong"><img src="img/icon/calculator-symbols02.png" alt="icon">Get Fare Rate</a> --}}
+                                    @if (Auth::check())
+                                        <a href="{{ route('dashboard') }}" class="btn rounded" >Home</a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="btn rounded" >Sign In</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -206,7 +198,7 @@
 
         <!-- footer -->
         <footer>
-            <div class="footer-wrap pt-190 pb-40" data-background="{{ asset('assets/img/bg/footer_bg.jpg')}}">
+            <div class="footer-wrap pt-120 pb-40" data-background="{{ asset('assets/img/bg/footer_bg.jpg')}}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-4 col-lg-4 col-md-6">

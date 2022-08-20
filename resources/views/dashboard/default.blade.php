@@ -33,13 +33,13 @@
     <!--*******************
         Preloader start
     ********************-->
-    {{-- <div id="preloader">
+    <div id="preloader">
         <div class="sk-three-bounce">
             <div class="sk-child sk-bounce1"></div>
             <div class="sk-child sk-bounce2"></div>
             <div class="sk-child sk-bounce3"></div>
         </div>
-    </div> --}}
+    </div>
     <!--*******************
         Preloader end
     ********************-->
@@ -60,11 +60,9 @@
                 <img class="logo-abbr" src="{{ asset('images/logo.png') }}" alt="">
 			@endif
 			@if(!empty($logoText))
-                <img class="logo-compact" src="{{ asset($logoText) }}" alt="">
-                <img class="brand-title" src="{{ asset($logoText) }}" alt="">
+                <p class="brand-title font-weight-bold my-4 " style="color: #104993; font-size: 1.19rem; max-width: 200px !important;">{{ $logoText }}</p>
 			@else
-                <img class="logo-compact" src="{{ asset('images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('images/logo-text.png') }}" alt="">
+                <p class="brand-title font-weight-bold my-4 " style="color: #104993; font-size: 1.19rem; max-width: 200px !important;">{{ $logoText }}</p>
 			@endif
             </a>
 
@@ -139,5 +137,7 @@
         Scripts
     ***********************************-->
 	@include('elements.footer-scripts')
+
+    @yield('page.script')
 </body>
 </html>

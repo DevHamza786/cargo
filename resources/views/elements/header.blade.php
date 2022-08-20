@@ -745,7 +745,7 @@
               </div> -->
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="{!! url('/app-profile') !!}" class="dropdown-item ai-icon">
+                            <a href="{{ route('profile') }}" class="dropdown-item ai-icon">
                                 <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
                                     width="18" height="18" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -755,9 +755,6 @@
                                 </svg>
                                 <span class="ml-2">Profile </span>
                             </a>
-                            {{-- <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" type="submit" onclick="event.preventDefault(); this.closest('form').submit();">Sign Out</button> --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item ai-icon" onclick="event.preventDefault(); this.closest('form').submit();">

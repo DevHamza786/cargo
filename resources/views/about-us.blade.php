@@ -711,36 +711,6 @@
         </div>
     </div>
     <!-- brand-area-end -->
-
-    <!-- newsletter -->
-    <section class="newsletter-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="newsletter-wrap">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="newsletter-content">
-                                    <h4>Newsletter Sign Up</h4>
-                                    <span>Notifications our best deals...</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="newsletter-form">
-                                    <form action="#">
-                                        <input type="email" placeholder="Enter your email...">
-                                        <button class="btn">subscribe</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- newsletter-end -->
-
 </main>
 
 @endsection

@@ -530,7 +530,7 @@ label {
 	display: none;
 }
 .sticky-menu .main-menu ul li a {
-	color: ;
+	/* color: #1696e7 !important ; */
 }
 .sticky-menu .main-menu ul li.active > a,
 .sticky-menu .main-menu ul li:hover > a {
@@ -642,7 +642,8 @@ label {
 	border-radius: 6px;
 }
 .sticky-menu .s-header-btn .btn {
-	background: #152a47;
+	background: #d40000;
+    color: #fff;
 }
 .sticky-menu .s-header-btn .btn,
 .sticky-menu .s-header-btn .btn::before {
