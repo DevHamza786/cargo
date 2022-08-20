@@ -108,13 +108,13 @@
                                     </div>
                                     <div class="card-body pt-0 p-0">
                                         @if (isset($tracking))
-                                            @foreach ($tracking as $key => $data)
+                                            @forelse ($tracking as $key => $data)
                                                 <div class="align-items-center row mx-0 border-bottom p-4">
                                                     <span
                                                         class="number col-2 col-sm-1 px-0 align-self-center">#{{ ++$key }}</span>
                                                     <div class="col-sm-4 col-12 col-xxl-5 my-3 my-sm-0 px-0">
                                                         <h5 class="mt-0 mb-0"><a class="text-black"
-                                                                href="{!! url('/event') !!}">{{ $data->track_id }}</a>
+                                                                href="{!! url('/track') !!}">{{ $data->track_id }}</a>
                                                         </h5>
                                                     </div>
                                                     <div
@@ -143,7 +143,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @empty
+                                                <div class="align-items-center row mx-0 border-bottom p-4 text-center" style="justify-content: center;">
+                                                    <h4 class="mt-0 mb-0">No Data Found</h4>
+                                                </div>
+                                            @endforelse
                                         @endif
                                     </div>
                                 </div>
