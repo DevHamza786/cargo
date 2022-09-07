@@ -27,6 +27,9 @@ Route::get('/contact', [UserTrackController::class, 'contact'])->name('contact')
 Route::post('/contact', [UserTrackController::class, 'sendContact'])->name('send.contact');
 
 
+Route::get('/pdf',function(){
+    return view('dashboard.tracking_slip_pdf');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
@@ -46,4 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-track', [TrackingController::class, 'store'])->name('store.track');
     Route::get('/edit-track/{id}', [TrackingController::class, 'edit'])->name('edit.track');
     Route::post('/update-track', [TrackingController::class, 'update'])->name('update.track');
+    Route::post('/update-track-status', [TrackingController::class, 'updateStatus'])->name('update.trackStatus');
+
+    // For PDF Slip
+    Route::get('/generate-pdf', [TrackingController::class, 'generatePDF'])->name('slip.pdf');
+
 });

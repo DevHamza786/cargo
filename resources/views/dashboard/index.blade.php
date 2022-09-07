@@ -169,7 +169,7 @@
                                                 <small class="text-black fs-18">{{ $data->where('customer_type', 'client')->count() }}</small>
                                             </div>
                                             <div>
-                                                <h6 class="fs-18 text-black font-w600">Adult</h6>
+                                                <h6 class="fs-18 text-black font-w600">Client</h6>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center">
@@ -179,7 +179,7 @@
                                                 <small class="text-black fs-18">{{ $data->where('customer_type', 'company')->count() }}</small>
                                             </div>
                                             <div>
-                                                <h6 class="fs-18 text-black font-w600">Young</h6>
+                                                <h6 class="fs-18 text-black font-w600">Company</h6>
                                             </div>
                                         </div>
                                     </div>

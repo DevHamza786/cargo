@@ -13,18 +13,19 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicon.png') }}">
 
 	@if(!empty(config('admin.public.pagelevel.css.'.$action)))
-		@foreach(config('admin.public.pagelevel.css.'.$action) as $style)
-				<link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
-		@endforeach
+    @foreach(config('admin.public.pagelevel.css.'.$action) as $style)
+    <link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
+    @endforeach
 	@endif
 
 	{{-- Global Theme Styles (used by all pages) --}}
 	@if(!empty(config('admin.public.global.css')))
-		@foreach(config('admin.public.global.css') as $style)
-			<link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
-		@endforeach
+    @foreach(config('admin.public.global.css') as $style)
+    <link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
+    @endforeach
 	@endif
-
+    {{-- For Toaster --}}
+    <link href="{{ asset('/vendor/toastr/css/toastr.min.css') }}" rel="stylesheet" type="text/css"/>
 
 </head>
 

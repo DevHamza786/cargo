@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Tracking;
 use Illuminate\Http\Request;
+use LynX39\LaraPdfMerger\PdfManage;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TrackingController extends Controller
 {
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -32,7 +36,7 @@ class TrackingController extends Controller
 
         $action = 'tracking_table';
 
-        return view('dashboard.track', compact('page_title', 'page_description','action','logo','logoText' , 'data'));
+        return view('dashboard.track', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'data'));
     }
 
     public function create()
@@ -44,12 +48,12 @@ class TrackingController extends Controller
 
         $action = 'tracking_table';
 
-        return view('dashboard.create_tracking', compact('page_title', 'page_description','action','logo','logoText'));
-
+        return view('dashboard.create_tracking', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
     }
 
     public function store(Request $request)
     {
+
         $page_title = 'Tracking';
         $page_description = 'Some description for the page';
         $logo = "assets/img/logo/new_logo.png";
@@ -60,8 +64,8 @@ class TrackingController extends Controller
         $trackingData = Tracking::create($request->all());
 
         return redirect()
-        ->to(route('track'))
-        ->with('success', 'The tracking has been added successfully!');
+            ->to(route('track'))
+            ->with('success', 'The tracking has been added successfully!');
     }
 
     public function edit($id)
@@ -76,8 +80,7 @@ class TrackingController extends Controller
         $data = Tracking::find($id);
 
 
-        return view('dashboard.edit_track', compact('page_title', 'page_description','action','logo','logoText','data'));
-
+        return view('dashboard.edit_track', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'data'));
     }
 
     public function update(Request $request)
@@ -89,12 +92,52 @@ class TrackingController extends Controller
 
         $action = 'tracking_table';
 
-        $updateTracking = Tracking::where('id',$request->id)->update($request->all());
+        $updateTracking = Tracking::where('id', $request->id)->update($request->all());
 
         return redirect()
-        ->to(route('track'))
-        ->with('success', 'The tracking has been update successfully!');
+            ->to(route('track'))
+            ->with('success', 'The tracking has been update successfully!');
     }
 
+    public function updateStatus(Request $request)
+    {
+        $data = Tracking::whereIn('id', $request->trackingID)->update(['status' => $request->status]);
+        if ($data) {
+            return response()->json(['success' => 'Tracking Status Update Successfully.']);
+        } else {
+            return response()->json(['error' => 'Something went wrong.']);
+        }
+    }
 
+    public function generatePDF(Request $request)
+    {
+        $files = [];
+
+        $trackData = Tracking::whereIn('id', $request->trackingID)->get();
+
+        foreach ($trackData as $data) {
+            $qrcode = base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate('https://pashaenterprises.org/tracking'));
+
+            $pdf = app('dompdf.wrapper');
+
+            $pdf->loadView('dashboard.tracking_slip_pdf', compact('data', 'qrcode'));
+
+            Storage::put('public/documents/' . $data->track_id . '.PDF', $pdf->output());
+
+            $files[] = $data->track_id . '.PDF';
+        }
+
+        // Create an instance of PDFMerger
+        $pdf = new \Jurosh\PDFMerge\PDFMerger;
+        foreach ($files as $key => $value) {
+            $pdfFilePath = storage_path() . '/app/public/documents/'.$value;
+            $pdf->addPDF($pdfFilePath, 'all');
+        }
+        $data = date("d/m/y");
+        // Generate download of "mergedpdf.pdf"
+        $pdf->merge('download', "pashaenterprises$data.pdf");
+
+        return response()->json(['files' => $files]);
+        // return $pdf->download('pashaenterprises.pdf');
+    }
 }

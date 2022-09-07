@@ -68,7 +68,7 @@ class SubAdminController extends Controller
                 'password' => $request->password,
             ];
 
-            $user->notify(new SubAdmin($userData));
+            // $user->notify(new SubAdmin($userData));
 
             return redirect()
                 ->to(route('subadmin'))
