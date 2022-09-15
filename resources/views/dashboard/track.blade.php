@@ -46,12 +46,18 @@
                                 </button>
                             </div>
                         @endif
-                        <button type="button" id="trackingIDs" class="btn light btn-info" data-toggle="modal"
+                        <button type="button" id="trackingIDs" class="btn light btn-info m-1" data-toggle="modal"
                             data-target="#exampleModalCenter">Tracking Status Update <span class="btn-icon-right"><i
                                     class="fa fa-plus color-info"></i></span>
                         </button>
-                        <button type="button" id="trackingSlip" class="btn light btn-warning">Download Slip <span class="btn-icon-right"><i
-                                    class="fa fa-download color-warning"></i></span>
+                        <button type="button" id="trackingSlip" class="btn light btn-warning m-1">Download Slip <span
+                                class="btn-icon-right"><i class="fa fa-download color-warning"></i></span>
+                        </button>
+                        <a href="{{ route('template') }}" class="btn light btn-info m-1">Template <span
+                                class="btn-icon-right"><i class="fa fa-download color-warning"></i></span>
+                        </a>
+                        <button type="button" id="trackingExcel" class="btn light btn-warning m-1">Download Tracking<span
+                                class="btn-icon-right"><i class="fa fa-download color-warning"></i></span>
                         </button>
                         <div class="table-responsive" style="padding-top: 20px;">
                             <table id="example-4" class="display min-w850">
@@ -190,7 +196,51 @@
                         trackingID: trackingSlip,
                     },
                     success: function(data) {
-                        console.log ('hamnza')
+                        console.log('hamnza')
+                    }
+                });
+            }
+        });
+
+        // For Tracking Excel
+        $("#trackingExcel").click(function() {
+            var trackingExcel = [];
+            $.each($("input:checkbox[name='row-check']:checked"), function() {
+                trackingExcel.push($(this).val());
+            });
+            if (trackingExcel.length === 0) {
+                toastr.error("Please! First Select Tracking for download.", "Error", {
+                    positionClass: "toast-top-right",
+                    timeOut: 5e3,
+                    closeButton: !0,
+                    debug: !1,
+                    newestOnTop: !0,
+                    progressBar: !0,
+                    preventDuplicates: !0,
+                    onclick: null,
+                    showDuration: "300",
+                    hideDuration: "1000",
+                    extendedTimeOut: "1000",
+                    showEasing: "swing",
+                    hideEasing: "linear",
+                    showMethod: "fadeIn",
+                    hideMethod: "fadeOut",
+                    tapToDismiss: !1
+                })
+            } else {
+
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('tracking.excel') }}",
+                    data: {
+                        trackingID: trackingExcel,
+                    },
+                    success: function(d) {
+                        var a = document.createElement("a");
+                        a.download = "filename.xlsx";
+                        a.href = "data:application/vnd.ms-excel," + encodeURI(d);
+                        document.body.appendChild(a);
+                        a.click();
                     }
                 });
             }

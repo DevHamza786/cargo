@@ -159,27 +159,17 @@
                             <div class="col-xl-12 col-xxl-6 col-md-6">
                                 <div class="card">
                                     <div class="card-header border-0 pb-0">
-                                        <h6 class="fs-16 text-black font-w600">Customers Type</h6>
+                                        <h6 class="fs-16 text-black font-w600">Customers</h6>
                                     </div>
                                     <div class="card-body">
                                         <div class="d-flex mb-4 align-items-center">
                                             <div class="d-inline-block position-relative donut-chart-sale mr-3">
                                                 <span class="donut"
                                                     data-peity='{ "fill": ["rgb(16, 74, 149)", "rgba(244, 244, 244, 1)"],   "innerRadius": 31, "radius": 10}'>{{ $data->where('customer_type', 'client')->count() }}/{{ $data->count() }}</span>
-                                                <small class="text-black fs-18">{{ $data->where('customer_type', 'client')->count() }}</small>
+                                                <small class="text-black fs-18">{{ $data->count() }}</small>
                                             </div>
                                             <div>
                                                 <h6 class="fs-18 text-black font-w600">Client</h6>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="d-inline-block position-relative donut-chart-sale mr-3">
-                                                <span class="donut"
-                                                    data-peity='{ "fill": ["rgb(16, 74, 149)", "rgba(244, 244, 244, 1)"],   "innerRadius": 31, "radius": 10}'>{{ $data->where('customer_type', 'company')->count() }}/{{ $data->count() }}</span>
-                                                <small class="text-black fs-18">{{ $data->where('customer_type', 'company')->count() }}</small>
-                                            </div>
-                                            <div>
-                                                <h6 class="fs-18 text-black font-w600">Company</h6>
                                             </div>
                                         </div>
                                     </div>

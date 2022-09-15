@@ -41,10 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-subadmin', [SubAdminController::class, 'create'])->name('create.subadmin');
     Route::post('/store-subadmin', [SubAdminController::class, 'store'])->name('store.subadmin');
 
-
-
     // For Tracking
-    Route::get('/track', [TrackingController::class, 'index'])->name('track');
+    Route::get('/tracking', [TrackingController::class, 'index'])->name('track');
     Route::get('/create-track', [TrackingController::class, 'create'])->name('create.track');
     Route::post('/store-track', [TrackingController::class, 'store'])->name('store.track');
     Route::get('/edit-track/{id}', [TrackingController::class, 'edit'])->name('edit.track');
@@ -53,5 +51,10 @@ Route::middleware('auth')->group(function () {
 
     // For PDF Slip
     Route::get('/generate-pdf', [TrackingController::class, 'generatePDF'])->name('slip.pdf');
+
+    // For Excel
+    Route::get('/export',[TrackingController::class,'template'])->name('template');
+    Route::get('/export-tracking',[TrackingController::class,'trackingExport'])->name('tracking.excel');
+
 
 });

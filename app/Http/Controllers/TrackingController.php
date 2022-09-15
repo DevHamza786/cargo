@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TrackingExport;
 use App\Models\Tracking;
 use Illuminate\Http\Request;
+use App\Exports\TrackingTemplate;
 use LynX39\LaraPdfMerger\PdfManage;
+use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -139,5 +142,17 @@ class TrackingController extends Controller
 
         return response()->json(['files' => $files]);
         // return $pdf->download('pashaenterprises.pdf');
+    }
+
+    // For Excel
+    public function template()
+    {
+        return Excel::download(new TrackingTemplate, 'PE-Template.xlsx');
+    }
+
+    public function trackingExport(Request $req)
+    {
+        return Excel::download(new TrackingExport($req->trackingID), 'PE-Tracking.xlsx');
+
     }
 }
