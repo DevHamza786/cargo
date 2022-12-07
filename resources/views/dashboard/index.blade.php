@@ -165,7 +165,7 @@
                                         <div class="d-flex mb-4 align-items-center">
                                             <div class="d-inline-block position-relative donut-chart-sale mr-3">
                                                 <span class="donut"
-                                                    data-peity='{ "fill": ["rgb(16, 74, 149)", "rgba(244, 244, 244, 1)"],   "innerRadius": 31, "radius": 10}'>{{ $data->where('customer_type', 'client')->count() }}/{{ $data->count() }}</span>
+                                                    data-peity='{ "fill": ["rgb(16, 74, 149)", "rgba(244, 244, 244, 1)"],   "innerRadius": 31, "radius": 10}'>{{ $data->count() }}/{{ $data->count() }}</span>
                                                 <small class="text-black fs-18">{{ $data->count() }}</small>
                                             </div>
                                             <div>
