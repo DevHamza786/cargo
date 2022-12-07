@@ -10,7 +10,7 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li class="{{ $action == 'tracking_table' ? 'mm-active' : '' }}"><a class="has-arrow ai-icon" href="{{ route('track') }}">
+            <li class="{{ $action == 'tracking_table' ? 'mm-active' : '' }}"><a class="has-arrow ai-icon" href="{{ route('admin.track') }}">
                 <i class="flaticon-381-internet"></i>
                 <span class="nav-text">Tracking</span>
             </a>

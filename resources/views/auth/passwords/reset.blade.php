@@ -9,7 +9,7 @@
       <div class="col-xl-12">
         <div class="auth-form">
             <div class="text-center mb-3">
-              <a href="{!! url('/index'); !!}"><img src="{{ asset('assets/img/logo/white_logo.png') }}" alt=""></a>
+              <a href="{!! url('/'); !!}"><img src="{{ asset('assets/img/logo/white_logo.png') }}" alt=""></a>
             </div>
             <h4 class="text-center mb-4 text-white">{{ __('Reset Password') }}</h4>
             <form method="POST" action="{{ route('password.update') }}">

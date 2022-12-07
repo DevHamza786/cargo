@@ -102,7 +102,7 @@
                                                 </svg>
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="{{ route('track') }}">View Detail</a>
+                                                <a class="dropdown-item" href="{{ route('admin.track') }}">View Detail</a>
                                             </div>
                                         </div>
                                     </div>

@@ -158,7 +158,7 @@
                                         <ul style="color: #1696e7 !important;">
                                             <li class="{{ $action == "home" ? 'active': '' }}"><a href="{{ route('home') }}">Home</a></li>
                                             <li class="{{ $action == "about" ? 'active': '' }}"><a href="{{ route('about_us') }}">About Us</a></li>
-                                            <li class="{{ $action == "tracking" ? 'active': '' }}"><a href="{{ route('tracking') }}">Tracking</a></li>
+                                            <li class="{{ $action == "tracking" ? 'active': '' }}"><a href="{{ route('track') }}">Tracking</a></li>
                                             <li class="{{ $action == "contact" ? 'active': '' }}"><a href="{{ route('contact') }}">Contact Us</a></li>
                                         </ul>
                                     </nav>

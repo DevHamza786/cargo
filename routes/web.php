@@ -22,7 +22,7 @@ Auth::routes(['register' => false]);
 Route::get('/', [UserTrackController::class, 'index'])->name('home');
 Route::post('/user-tracking', [UserTrackController::class, 'find'])->name('user.tracking');
 Route::get('/about', [UserTrackController::class, 'about'])->name('about_us');
-Route::get('/tracking', [UserTrackController::class, 'tracking'])->name('tracking');
+Route::get('/tracking', [UserTrackController::class, 'tracking'])->name('track');
 Route::get('/contact', [UserTrackController::class, 'contact'])->name('contact');
 Route::post('/contact', [UserTrackController::class, 'sendContact'])->name('send.contact');
 
@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-subadmin', [SubAdminController::class, 'store'])->name('store.subadmin');
 
     // For Tracking
-    Route::get('/tracking', [TrackingController::class, 'index'])->name('track');
+    Route::get('/all-tracking', [TrackingController::class, 'index'])->name('admin.track');
     Route::get('/create-track', [TrackingController::class, 'create'])->name('create.track');
     Route::post('/store-track', [TrackingController::class, 'store'])->name('store.track');
     Route::get('/edit-track/{id}', [TrackingController::class, 'edit'])->name('edit.track');
