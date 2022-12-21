@@ -67,7 +67,7 @@ class TrackingController extends Controller
         $trackingData = Tracking::create($request->all());
 
         return redirect()
-            ->to(route('all-tracking'))
+            ->to(route('admin.track'))
             ->with('success', 'The tracking has been added successfully!');
     }
 
